@@ -1,10 +1,58 @@
 # Vercel Interview Prep App
 
-A fully bootstrapped Next.js application ready for your Vercel interview! This project comes pre-configured with modern tools and a solid foundation that you can quickly extend during your interview.
+For the Vercel interview, I was asked to create a simple autocomplete feature. This is a simple implementation of that feature with a few extra features.
 
-## 🚀 Quick Start
+---
+
+## 🚀 Features
+
+-   **Smart Autocomplete**: Lightning-fast word search with prefix and fuzzy matching, powered by a Trie data structure and Levenshtein distance algorithm.
+-   **High-Frequency Word Prioritization**: (Considered/Planned) The system can be enhanced to showcase high-frequency words at the top of suggestions, giving priority to more commonly used words.
+-   **Infinite Scroll / Load More**: (Considered/Planned) As users scroll through the autocomplete options, more results can be dynamically loaded beyond the initial set, enabling exploration of a larger word list.
+-   **Reusable UI Components**: Pre-built with [shadcn/ui](https://ui.shadcn.com/) and Tailwind CSS for rapid development.
+-   **Type Safety**: End-to-end TypeScript coverage for all APIs and utilities.
+-   **Modern Developer Experience**: App Router, React 19, and best practices throughout.
+
+---
+
+## 🛠️ Tech Stack
+
+-   **Next.js 15** (App Router)
+-   **React 19**
+-   **TypeScript**
+-   **Tailwind CSS**
+-   **shadcn/ui**
+
+---
+
+## 📦 Project Structure
+
+```
+src/
+├── app/
+│   ├── api/           # Backend API routes
+│   │   ├── users/     # User management endpoints
+│   │   └── words/     # Word search/autocomplete endpoints
+│   ├── autocomplete/  # Autocomplete demo page
+│   ├── layout.tsx     # Root layout and navigation
+│   └── page.tsx       # Home page
+├── components/
+│   ├── ui/            # shadcn/ui components
+│   └── nav.tsx        # Navigation bar
+├── lib/
+│   ├── types.ts       # TypeScript type definitions
+│   ├── utils.ts       # Utility functions and API client
+│   └── wordlist.txt   # Large word list for autocomplete
+```
+
+---
+
+## ⚡ Quick Start
 
 ```bash
+# Install dependencies
+npm install
+
 # Start the development server
 npm run dev
 
@@ -12,164 +60,34 @@ npm run dev
 open http://localhost:3000
 ```
 
-## 🛠️ Tech Stack
+---
 
--   **Next.js 15** - App Router with React 19
--   **TypeScript** - Type safety and developer experience
--   **Tailwind CSS** - Modern utility-first styling
--   **shadcn/ui** - Beautiful, accessible UI components
--   **API Routes** - Full-stack functionality with backend endpoints
+## 🔌 API Endpoints
 
-## 📁 Project Structure
+### Words API (`/api/words/search`)
 
-```
-src/
-├── app/
-│   ├── api/           # Backend API routes
-│   │   ├── users/     # User management endpoints
-│   │   └── tasks/     # Task management endpoints
-│   ├── demo/          # Demo page showing API functionality
-│   ├── layout.tsx     # Root layout with navigation
-│   └── page.tsx       # Home page
-├── components/
-│   ├── ui/            # shadcn/ui components
-│   └── nav.tsx        # Navigation component
-└── lib/
-    ├── types.ts       # TypeScript type definitions
-    └── utils.ts       # Utility functions and API client
-```
+-   `GET /api/words/search?query=foo` — Prefix search for words
+-   `GET /api/words/search?query=foo&fuzzy=true` — Fuzzy search for similar words
 
-## 🔧 Available API Endpoints
+---
 
-### Users API (`/api/users`)
+## 🧠 Autocomplete Demo
 
--   `GET /api/users` - Get all users
--   `GET /api/users?role=admin` - Filter users by role
--   `POST /api/users` - Create a new user
--   `DELETE /api/users?id=1` - Delete a user
+Visit `/autocomplete` for a live demo of the smart autocomplete feature, including:
 
-### Tasks API (`/api/tasks`)
+-   Real-time suggestions as you type
+-   Keyboard navigation and selection
+-   Multi-select support
+-   Showcase of selected words
+-   **(Planned) High-frequency words prioritized at the top of suggestions**
+-   **(Planned) Infinite scroll or 'load more' to fetch additional options as you scroll**
 
--   `GET /api/tasks` - Get all tasks
--   `GET /api/tasks?status=pending` - Filter by status
--   `GET /api/tasks?priority=high` - Filter by priority
--   `GET /api/tasks?userId=1` - Filter by user
--   `POST /api/tasks` - Create a new task
--   `PUT /api/tasks` - Update a task
--   `DELETE /api/tasks?id=1` - Delete a task
+---
 
-## 💡 Features Ready for Extension
+## 🧩 Extending the App
 
-### Pre-built UI Components
-
--   Buttons, Cards, Forms, Dialogs
--   Badges, Separators, Progress bars
--   Dropdowns, Selects, Inputs
--   And many more from shadcn/ui!
-
-### API Utilities
-
--   Type-safe API client in `src/lib/utils.ts`
--   Consistent error handling
--   Request/response types in `src/lib/types.ts`
-
-### Styling Utilities
-
--   Status and priority color coding
--   Date/time formatting functions
--   Responsive design helpers
-
-## 🎯 Demo Page
-
-Visit `/demo` to see:
-
--   Live API endpoints in action
--   Sample data display
--   Interactive functionality
--   API status monitoring
-
-## 🚦 Development Commands
-
-```bash
-# Development server
-npm run dev
-
-# Production build
-npm run build
-
-# Start production server
-npm run start
-
-# Lint code
-npm run lint
-```
-
-## 📝 Sample Data
-
-The app comes with sample users and tasks for immediate testing:
-
-**Users:**
-
--   John Doe (admin)
--   Jane Smith (user)
--   Bob Johnson (user)
-
-**Tasks:**
-
--   Various statuses: pending, in-progress, completed
--   Different priorities: low, medium, high
--   Assigned to different users
-
-## 🎨 UI Components Available
-
-All shadcn/ui components are pre-installed and ready to use:
-
--   `Button`, `Card`, `Badge`, `Separator`
--   `Input`, `Textarea`, `Select`, `Checkbox`
--   `Dialog`, `AlertDialog`, `Dropdown`
--   `Tabs`, `Accordion`, `Progress`
--   And more!
-
-## 💻 Perfect for Interview Scenarios
-
-This setup is ideal for implementing common interview requirements:
-
--   **CRUD operations** - Users and tasks APIs ready
--   **Data filtering** - Query parameters implemented
--   **Form handling** - Components and validation ready
--   **State management** - React hooks examples
--   **Responsive design** - Mobile-first approach
--   **Type safety** - Full TypeScript coverage
-
-## 🎯 Quick Extension Ideas
-
-During your interview, you could easily add:
-
--   User authentication/login forms
--   Task management dashboard
--   Data visualization components
--   Real-time updates
--   Search and filtering UI
--   File upload functionality
--   And much more!
-
-## 🚀 Ready to Interview!
-
-Your Next.js app is fully configured and ready to go. Just run `npm run dev` and start building amazing features during your Vercel interview!
-
-Good luck! 🍀
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
--   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+-   Add persistent storage (e.g., database) for users/tasks
+-   Implement authentication and authorization
+-   Expand the API with new resources
+-   Add more UI pages or dashboards
+-   Integrate with external APIs or services
